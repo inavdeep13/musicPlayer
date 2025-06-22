@@ -98,32 +98,22 @@ body {
     align-items: center;
 }
 
-.timeline > .slider {
+#progress {
+    -webkit-appearance: none;
     width: 100%;
     height: 2px;
-    border-radius: 2px;
     background: var(--gray-color);
+    border-radius: 2px;
     cursor: pointer;
-    position: relative;
+    margin: 20px 0;
 }
 
-.timeline > .slider > .progress {
-    width: 30%;
-    height: 100%;
-    pointer-events: none;
-    background: var(--orange-color);
-    position: absolute;
-}
-
-.timeline > .slider > .progress > .pin {
+#progress::-webkit-slider-thumb {
+    -webkit-appearance: none;
     width: 8px;
     height: 8px;
     border-radius: 8px;
-    pointer-events: all;
     background: var(--black-color);
-    position: absolute;
-    right: -5px;
-    top: -3px;
 }
 
 .controls {

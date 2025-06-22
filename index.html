@@ -17,8 +17,12 @@
 
         <div class="content">
             <figure class="album_cover">
-                <img src="images/cover_img.jpg" alt="cover image">
+                <img src="media/cover_img.jpg" alt="cover image">
             </figure>
+
+            <audio id="song_audio">
+                <source src="media/Let Me Down Slowly.mp3" type="audio/mpeg">
+            </audio>
 
             <div class="song_info">
                 <div class="song_name">Let me Down Slowly</div>
@@ -28,20 +32,18 @@
             <div class="timeline">
                 <div class="time">
                     <span class="current">00:00</span>
-                    <span class="total">02:58</span>
+                    <span class="total">06:35</span>
                 </div>
 
-                <div class="slider">
-                    <div class="progress">
-                        <div class="pin"></div>
-                    </div>
-                </div>
+
+                <input type="range" value="0" id = "progress">
+       
             </div>
 
             <div class="controls">
                 <span class="alink"><i class="fas fa-random"></i></span>
                 <span class="alink"><i class="fas fa-step-backward"></i></span>
-                <span class="alink"><i class="fas fa-play"></i></span>
+                <span class="alink" onclick = "playPause()"><i class="fas fa-play" id = "ctrlIcon"></i></span>
                 <span class="alink"><i class="fas fa-step-forward"></i></span>
                 <span class="alink"><i class="fas fa-sync-alt"></i></span>
             </div>
@@ -52,5 +54,7 @@
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
