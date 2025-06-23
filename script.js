@@ -1,10 +1,18 @@
 let progress = document.getElementById("progress");
 let song_audio = document.getElementById("song_audio");
 let ctrlIcon = document.getElementById("ctrlIcon");
+let currentTimeDuration = document.getElementById("current-time");
+let totalTimeDuration = document.getElementById("total-time");
 
 song_audio.onloadedmetadata = function(){
     progress.max = song_audio.duration;
     progress.value = song_audio.currentTime;
+    totalTimeDuration.innerText = formatTime(song_audio.duration) || "00:00";
+}
+
+song_audio.ontimeupdate = () => {
+    const currentTime = song_audio.currentTime;
+    currentTimeDuration.innerText = formatTime(currentTime) ||  "00:00";
 }
 
 function playPause() {
@@ -30,6 +38,9 @@ progress.onchange = function(){
     song_audio.currentTime = progress.value;
     ctrlIcon.classList.add("fa-pause");
     ctrlIcon.classList.remove("fa-play");
+    // progress.value = event.timeStamp
+    // song_audio.play();
+    
 }
 
 function resetSong() {
@@ -40,3 +51,10 @@ function resetSong() {
 ["backward", "forward", "sync"].forEach(id => {
     document.getElementById(id).addEventListener("click", resetSong);
 });
+
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = Math.floor(seconds % 60);
+  return `${min}:${sec < 10 ? '0' + sec : sec}`;
+}
+
