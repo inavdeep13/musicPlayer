@@ -9,7 +9,7 @@ song_audio.onloadedmetadata = function(){
 
 function playPause() {
     if(ctrlIcon.classList.contains("fa-pause")){
-        song_audio.pause;
+        song_audio.pause();
         ctrlIcon.classList.remove("fa-pause");
         ctrlIcon.classList.add("fa-play");
     }else {
@@ -31,3 +31,12 @@ progress.onchange = function(){
     ctrlIcon.classList.add("fa-pause");
     ctrlIcon.classList.remove("fa-play");
 }
+
+function resetSong() {
+    song_audio.currentTime = 0;
+    progress.value = 0;
+}
+
+["backward", "forward", "sync"].forEach(id => {
+    document.getElementById(id).addEventListener("click", resetSong);
+});
